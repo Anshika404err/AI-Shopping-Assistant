@@ -1,0 +1,16 @@
+# Node
+node_modules/
+dist/
+.env
+
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# FAISS index (regenerable via ingest.py)
+rag-service/faiss_index/
+
+# OS/editor
+.DS_Store
+.vscode/
