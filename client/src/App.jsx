@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 
+const API = import.meta.env.VITE_API_URL || "http://localhost:5000";
 const sessionId = localStorage.getItem("sid") || crypto.randomUUID();
 localStorage.setItem("sid", sessionId);
 
@@ -12,7 +13,7 @@ function ProductCard({ product }) {
     setLoadingSummary(true);
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/api/summarize/${product.id}`
+        `${API}/api/summarize/${product.id}`
       );
       setSummary(data.summary);
     } catch {
@@ -98,7 +99,7 @@ export default function App() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/chat/${sessionId}`)
+      .get(`${API}/api/chat/${sessionId}`)
       .then((res) => setMessages(res.data))
       .catch(() => {});
   }, []);
@@ -115,7 +116,7 @@ export default function App() {
     setLoading(true);
 
     try {
-      const { data } = await axios.post("http://localhost:5000/api/chat", {
+      const { data } = await axios.post(`${API}/api/chat`, {
         sessionId,
         message: userText,
       });
