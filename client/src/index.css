@@ -1,1 +1,25 @@
 @import "tailwindcss";
+
+
+@theme {
+  --color-ink: #16213E;
+  --color-marigold: #E8A33D;
+  --color-marigold-dark: #C8841F;
+  --color-paper: #FFFCF7;
+  --color-sage: #4F7A5E;
+  --color-slate: #5C6670;
+  --font-display: "Fraunces", serif;
+  --font-sans: "Inter", sans-serif;
+}
+
+body {
+  background-color: var(--color-paper);
+}
+
+@keyframes pulse-dot {
+  0%, 80%, 100% { opacity: 0.2; }
+  40% { opacity: 1; }
+}
+.pulse-dot {
+  animation: pulse-dot 1.4s infinite ease-in-out;
+}
